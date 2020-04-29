@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "./dist/",
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "module": "CommonJS",
+    "lib": ["ES2017"],
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2017"
+  },
+  "include": ["./src/**/*"]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "mockzilla-webextension",
+  "version": "0.5.0",
+  "description": "A mocking toolkit for web-extensions leveraging the power of TypeScript to enhance your jest experience.",
+  "keywords": [
+    "TypeScript",
+    "webextension-polyfill",
+    "webextension-polyfill-ts",
+    "web-extension",
+    "mock",
+    "deep-mock",
+    "jest"
+  ],
+  "license": "ZLib",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "lint": "npm run lint:es && npm run lint:package && npm run lint:style",
+    "lint:es": "eslint src/**/*.ts --ext .ts --ignore-path .prettierignore",
+    "lint:es:fix": "npm run lint:es -- --fix",
+    "lint:fix": "npm run lint:es:fix && npm run lint:package:fix && npm run lint:style:fix",
+    "lint:package": "sort-package-json --check",
+    "lint:package:fix": "sort-package-json",
+    "lint:style": "npm run lint:style:base -- --check",
+    "lint:style:base": "prettier src/**/*.{ts,js,json} ./*.{ts,js,json}",
+    "lint:style:fix": "npm run lint:style:base -- --write"
+  },
+  "devDependencies": {
+    "@lusito/eslint-config": "^1.0.4",
+    "@lusito/prettier-config": "^1.0.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.4",
+    "jest": "^25.5.1",
+    "mockzilla": "^0.6.0",
+    "rimraf": "^3.0.2",
+    "sort-package-json": "^1.42.1",
+    "typescript": "^3.8.3",
+    "webextension-polyfill-ts": "^0.14.0"
+  },
+  "peerDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.5.1",
+    "mockzilla": "^0.6.0",
+    "webextension-polyfill-ts": "^0.14.0"
+  }
+}
