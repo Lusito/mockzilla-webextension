@@ -1,5 +1,5 @@
 import { Events } from "webextension-polyfill-ts";
-import { MockzillaDeep } from "mockzilla";
+import { MockzillaDeep, MockzillaError } from "mockzilla";
 
 export class MockzillaEvent<T extends (...args: any[]) => any> {
     private listeners: Function[] = [];
@@ -36,13 +36,13 @@ export class MockzillaEvent<T extends (...args: any[]) => any> {
         this.disabled = true;
     }
 
-    public emit = jest.fn((...args: Parameters<T>) => {
+    public emit(...args: Parameters<T>) {
         this.listeners.forEach((listener) => listener(...args));
-    });
+    };
 
     private disabledCheck(what: string) {
         if (this.disabled)
-            throw new Error(
+            throw new MockzillaError(
                 `Mock "${this.prefix}.${what}" has been used after tests have finished! You might have a memory leak there.`
             );
     }
