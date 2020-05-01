@@ -12,8 +12,8 @@ This is a **Work In Progress**! The API might change before version 1.0 is relea
 
 #### Features
 
-- Combines [webextension-polyfill-ts](https://github.com/lusito/webextension-polyfill-ts) with [mockzilla](https://github.com/lusito/mockzilla) to create a deep mock of the `browser` object.
-- Adds an additional function `mockEvent` to enable special support for webextension events.
+- Combines [webextension-polyfill-ts](https://github.com/lusito/webextension-polyfill-ts) with [mockzilla](https://github.com/lusito/mockzilla) to create a [deep mock of the browser object](https://lusito.github.io/mockzilla-webextension/browser.html).
+- Adds an additional function [mockEvent](https://lusito.github.io/mockzilla-webextension/mock-event.html) to enable special support for webextension events.
 
 #### Why use mockzilla-webextension
 
@@ -26,17 +26,38 @@ This is a **Work In Progress**! The API might change before version 1.0 is relea
 
 ```npm i -D mockzilla-webextension```
 
-### Examples
+### Getting Started
 
-The following examples are only basic examples. Try it for yourself, there is more functionality, that I've not yet documented.
+Check out the [documentation page](https://lusito.github.io/mockzilla-webextension/) for examples
 
-#### Deep Mocking
+### Example
 
-...todo
+This is an example of how a mocking with mockzilla-webextension looks like:
 
-#### Event Mockign
+```TypeScript
+describe("Web-Extension Helpers", () => {
+    describe("getActiveTabs()", () => {
+        it("should return active tabs", async () => {
+            const tabs: any[] = [{id: 1}, {id: 2}];
+            mockBrowser.tabs.query.expect({ active: true }).andResolve(tabs);
 
-...todo
+            expect(await getActiveTabs()).toEqual(tabs);
+        });
+    });
+
+    describe("onBeforeRedirect()", () => {
+        it("should register a listener and return a handle to remove the listener again", () => {
+            const listener = jest.fn();
+            mockBrowser.webRequest.onBeforeRedirect.addListener.expect(listener, expect.anything());
+
+            const removeListener = onBeforeRedirect(listener);
+
+            mockBrowser.webRequest.onBeforeRedirect.removeListener.expect(listener);
+            removeListener();
+        });
+    });
+});
+```
 
 ### Report issues
 
