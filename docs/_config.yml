@@ -1,7 +1,7 @@
 name: mockzilla-webextension
 
 project:
-  version: 0.5.0
+  version: 0.5.1
   download_url: https://www.npmjs.com/package/mockzilla-webextension
   download_text: Install on NPM
 
