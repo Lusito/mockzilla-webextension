@@ -1,7 +1,4 @@
----
-layout: page
-title: Deep Mock of Browser
----
+# Deep Mock of Browser
 
 ## Problem
 

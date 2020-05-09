@@ -1,7 +1,4 @@
----
-layout: page
-title: Event Mocking
----
+# Event Mocking
 
 ## Problem
 

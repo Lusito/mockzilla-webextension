@@ -1,0 +1,17 @@
+title: mockzilla-webextension
+description: A mocking toolkit for web-extensions leveraging the power of TypeScript to enhance your jest experience.
+base: '/mockzilla-webextension/'
+themeConfig:
+  nav:
+  - link: 'https://github.com/lusito/mockzilla-webextension'
+    text: Github
+  - link: 'https://www.npmjs.com/package/mockzilla-webextension'
+    text: NPM
+  sidebar:
+  - '/setup'
+  - '/browser'
+  - '/mock-event'
+  displayAllHeaders: true
+plugins:
+- fulltext-search
+  

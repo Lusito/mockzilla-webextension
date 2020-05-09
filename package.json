@@ -20,6 +20,8 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc",
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs",
     "lint": "npm run lint:es && npm run lint:package && npm run lint:style",
     "lint:es": "eslint src/**/*.ts --ext .ts --ignore-path .prettierignore",
     "lint:es:fix": "npm run lint:es -- --fix",
@@ -40,6 +42,8 @@
     "rimraf": "^3.0.2",
     "sort-package-json": "^1.42.1",
     "typescript": "^3.8.3",
+    "vuepress": "^1.4.1",
+    "vuepress-plugin-fulltext-search": "^2.0.3",
     "webextension-polyfill-ts": "^0.14.0"
   },
   "peerDependencies": {
