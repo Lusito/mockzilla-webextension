@@ -8,7 +8,7 @@ You want to to work with web-extension events, but you don't want to expect call
 
 `my-events.spec.ts`
 
-```javascript
+```TypeScript
 import { mockEvent, MockzillaEventOf } from "mockzilla-webextension";
 
 describe("MyEventHandler", () => {

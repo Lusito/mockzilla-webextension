@@ -36,7 +36,7 @@ yarn add --dev jest @types/jest ts-jest
 ```
 
 Create a file `jest.config.js`:
-```javascript
+```TypeScript
 module.exports = {
     transform: {
         ".+\\.ts$": "ts-jest",

@@ -6,7 +6,7 @@ The `browser` object in web-extensions is a deeply nested API, which requires yo
 
 `my-web-extension.ts`
 
-```javascript
+```TypeScript
 async function getActiveTabs() {
     return await browser.tabs.query({ active: true });
 }
@@ -24,7 +24,7 @@ By using the power of [mockzilla](https://lusito.github.io/mockzilla/) project, 
 
 `my-web-extension.spec.ts`
 
-```javascript
+```TypeScript
 describe("Web-Extension Helpers", () => {
     describe("getActiveTabs()", () => {
         it("should return active tabs", async () => {
