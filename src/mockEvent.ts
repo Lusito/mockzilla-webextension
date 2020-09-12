@@ -2,7 +2,7 @@ import { Events } from "webextension-polyfill-ts";
 import { MockzillaDeep, MockzillaError } from "mockzilla";
 
 export class MockzillaEvent<T extends (...args: any[]) => any> {
-    private listeners: Function[] = [];
+    private listeners: T[] = [];
 
     private disabled = false;
 
@@ -12,17 +12,17 @@ export class MockzillaEvent<T extends (...args: any[]) => any> {
         this.prefix = prefix;
     }
 
-    public addListener = jest.fn((callback: Function) => {
+    public addListener = jest.fn((callback: T) => {
         this.disabledCheck("addListener");
         this.listeners.push(callback);
     });
 
-    public removeListener = jest.fn((callback: Function) => {
+    public removeListener = jest.fn((callback: T) => {
         this.disabledCheck("removeListener");
         this.listeners = this.listeners.filter((listener) => listener !== callback);
     });
 
-    public hasListener = jest.fn((callback: Function) => {
+    public hasListener = jest.fn((callback: T) => {
         this.disabledCheck("hasListener");
         return this.listeners.includes(callback);
     });
@@ -38,7 +38,7 @@ export class MockzillaEvent<T extends (...args: any[]) => any> {
 
     public emit(...args: Parameters<T>) {
         this.listeners.forEach((listener) => listener(...args));
-    };
+    }
 
     private disabledCheck(what: string) {
         if (this.disabled)
