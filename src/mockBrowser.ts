@@ -1,4 +1,4 @@
-import { Browser } from "webextension-polyfill-ts";
+import { Browser } from "webextension-polyfill";
 import { deepMock, MockzillaDeep } from "mockzilla";
 
 const [browser, mockBrowser, mockBrowserNode] = deepMock<Browser>("browser", false);
@@ -6,7 +6,7 @@ const [browser, mockBrowser, mockBrowserNode] = deepMock<Browser>("browser", fal
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 (global as any).mockBrowser = mockBrowser;
 
-jest.mock("webextension-polyfill-ts", () => ({ browser }));
+jest.mock("webextension-polyfill", () => browser);
 
 beforeEach(() => mockBrowserNode.enable());
 

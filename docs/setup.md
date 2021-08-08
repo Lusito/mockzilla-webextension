@@ -2,9 +2,9 @@
 
 ## Requirements
 
-You need to be using [webextension-polyfill-ts](https://github.com/lusito/webextension-polyfill-ts) in your webextension for this project to work.
+You need to be using [webextension-polyfill](https://github.com/mozilla/webextension-polyfill) and [@types/webextension-polyfill](https://github.com/lusito/webextension-polyfill-ts) in your webextension for this project to work.
 
-If you don't want to use webextension-polyfill-ts in your webextension, you might want to take a look at [mockzilla](https://lusito.github.io/mockzilla/) instead and only import the types from web-extension-polyfill. Take a look at the [deep-mock](https://lusito.github.io/mockzilla/deep-mock.html) documentation to get an idea.
+If you don't want to use the above in your webextension, you might want to take a look at [mockzilla](https://lusito.github.io/mockzilla/) instead and find a custom solution. Take a look at the [deep-mock](https://lusito.github.io/mockzilla/deep-mock.html) documentation to get an idea.
 
 ## Install With NPM
 

@@ -12,7 +12,7 @@ This is a **Work In Progress**! The API might change before version 1.0 is relea
 
 #### Features
 
-- Combines [webextension-polyfill-ts](https://github.com/lusito/webextension-polyfill-ts) with [mockzilla](https://github.com/lusito/mockzilla) to create a [deep mock of the browser object](https://lusito.github.io/mockzilla-webextension/browser.html).
+- Combines [@types/webextension-polyfill](https://github.com/lusito/webextension-polyfill-ts) with [mockzilla](https://github.com/lusito/mockzilla) to create a [deep mock of the browser object](https://lusito.github.io/mockzilla-webextension/browser.html).
 - Adds an additional function [mockEvent](https://lusito.github.io/mockzilla-webextension/mock-event.html) to enable special support for webextension events.
 
 #### Why use mockzilla-webextension

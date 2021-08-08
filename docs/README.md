@@ -8,7 +8,7 @@ features:
 - title: Painless
   details: Writing mocks should be simple and fun. With mockzilla-webextension you can skip writing manual mocks of the browser API and focus on writing tests.
 - title: Typesafe
-  details: You use TypeScript to have code-completion and type-safety? Great! mockzilla-webextension uses the types from webextension-polyfill-ts to ensure a pleasant experience!
+  details: You use TypeScript to have code-completion and type-safety? Great! mockzilla-webextension uses the types from @types/webextension-polyfill to ensure a pleasant experience!
 - title: Good Errors
   details: Errors should point to where the errors come from. mockzilla will give you hints on where you expected calls and where they actually happened.
 footer: Zlib/Libpng License | Copyright © 2020 Santo Pfingsten

@@ -1,4 +1,4 @@
-import { Events } from "webextension-polyfill-ts";
+import { Events } from "webextension-polyfill";
 import { MockzillaDeep, MockzillaError } from "mockzilla";
 
 export class MockzillaEvent<T extends (...args: any[]) => any> {
