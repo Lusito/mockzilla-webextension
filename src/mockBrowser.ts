@@ -1,41 +1,41 @@
 import { Browser } from "webextension-polyfill";
-import { deepMock, MockzillaDeep } from "mockzilla";
+import { deepMock, MockzillaDeep, MockzillaNode } from "mockzilla";
 
-const [, mockBrowser, mockBrowserNode] = deepMock<Browser>("browser", false);
+const [, mockBrowser, mockBrowserRootNode] = deepMock<Browser>("browser", false);
 
-// eslint-disable-next-line @typescript-eslint/no-use-before-define
 (global as any).mockBrowser = mockBrowser;
+(global as any).mockBrowserRootNode = mockBrowserRootNode;
 
 const proxy = new Proxy(
     {},
     {
         get: (...args) => {
             if (args[1] === "__esModule") return false;
-            return mockBrowserNode.traps.get(...args);
+            return mockBrowserRootNode.traps.get(...args);
         },
-        // forward the rest to mockBrowserNode traps
-        ownKeys: (...args) => mockBrowserNode.traps.ownKeys(...args),
-        has: (...args) => mockBrowserNode.traps.has(...args),
-        apply: (...args) => mockBrowserNode.traps.apply(...args),
-        getPrototypeOf: (...args) => mockBrowserNode.traps.getPrototypeOf(...args),
-        setPrototypeOf: (...args) => mockBrowserNode.traps.setPrototypeOf(...args),
-        isExtensible: (...args) => mockBrowserNode.traps.isExtensible(...args),
-        preventExtensions: (...args) => mockBrowserNode.traps.preventExtensions(...args),
-        set: (...args) => mockBrowserNode.traps.set(...args),
-        deleteProperty: (...args) => mockBrowserNode.traps.deleteProperty(...args),
-        construct: (...args) => mockBrowserNode.traps.construct(...args),
-        getOwnPropertyDescriptor: (...args) => mockBrowserNode.traps.getOwnPropertyDescriptor(...args),
-        defineProperty: (...args) => mockBrowserNode.traps.defineProperty(...args),
+        // forward the rest to mockBrowserRootNode traps
+        ownKeys: (...args) => mockBrowserRootNode.traps.ownKeys(...args),
+        has: (...args) => mockBrowserRootNode.traps.has(...args),
+        apply: (...args) => mockBrowserRootNode.traps.apply(...args),
+        getPrototypeOf: (...args) => mockBrowserRootNode.traps.getPrototypeOf(...args),
+        setPrototypeOf: (...args) => mockBrowserRootNode.traps.setPrototypeOf(...args),
+        isExtensible: (...args) => mockBrowserRootNode.traps.isExtensible(...args),
+        preventExtensions: (...args) => mockBrowserRootNode.traps.preventExtensions(...args),
+        set: (...args) => mockBrowserRootNode.traps.set(...args),
+        deleteProperty: (...args) => mockBrowserRootNode.traps.deleteProperty(...args),
+        construct: (...args) => mockBrowserRootNode.traps.construct(...args),
+        getOwnPropertyDescriptor: (...args) => mockBrowserRootNode.traps.getOwnPropertyDescriptor(...args),
+        defineProperty: (...args) => mockBrowserRootNode.traps.defineProperty(...args),
     }
 );
 
 jest.mock("webextension-polyfill", () => proxy);
 
-beforeEach(() => mockBrowserNode.enable());
+beforeEach(() => mockBrowserRootNode.enable());
 
-afterEach(() => mockBrowserNode.verifyAndDisable());
+afterEach(() => mockBrowserRootNode.verifyAndDisable());
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     export const mockBrowser: MockzillaDeep<Browser>;
+    export const mockBrowserRootNode: MockzillaNode;
 }
