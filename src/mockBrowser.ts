@@ -29,7 +29,7 @@ const proxy = new Proxy(
     }
 );
 
-jest.mock("webextension-polyfill", () => proxy);
+jest.mock("webextension-polyfill", () => ({ __esModule: true, default: proxy }));
 
 beforeEach(() => mockBrowserRootNode.enable());
 
